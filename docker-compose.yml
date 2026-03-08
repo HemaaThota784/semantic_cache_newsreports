@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount pre-built index and models from host into container
+      # Run python scripts/build_index.py on the host first
+      - ./chroma_db:/app/chroma_db
+      - ./models:/app/models
+    environment:
+      - CHROMA_DIR=/app/chroma_db
+      - CLUSTERER_PATH=/app/models/soft_clusterer.pkl
+      - EMBEDDING_MODEL=all-MiniLM-L6-v2
+      - CACHE_THRESHOLD=0.85
+      - TOP_K_RESULTS=5
+    restart: unless-stopped
