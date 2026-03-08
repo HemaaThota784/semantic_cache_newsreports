@@ -4,7 +4,7 @@ analysis/cluster_report.py
 Generates the semantic cluster diagnostics that convince a sceptical reader
 the clusters are meaningful.
 
-What we show:
+What code shows:
   1. Top terms per cluster (via TF-IDF over cluster-member documents)
   2. Most confident members (low entropy) — the cluster's "core"
   3. Most uncertain members (high entropy) — genuine boundary cases
@@ -13,8 +13,6 @@ What we show:
   6. Cross-tabulation: original newsgroup labels vs dominant cluster
      (shows how the GMM merges/splits the original 20 categories)
 
-Run from the project root after build_index.py has completed:
-    python analysis/cluster_report.py
 """
 
 import logging
