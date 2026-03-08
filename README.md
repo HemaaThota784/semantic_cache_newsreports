@@ -188,22 +188,4 @@ Build the index first so `chroma_db/` and `models/` exist to be mounted.
 Downloaded automatically via `sklearn.datasets.fetch_20newsgroups`.  
 Source: http://qwone.com/~jason/20Newsgroups/
 
-## System Architecture
 
-Query
-  │
-  ▼
-Embed query (SentenceTransformer)
-  │
-  ├──► Semantic Cache (cosine similarity lookup)
-  │        │
-  │        └── Cache Hit → return cached result
-  │
-  ▼
-Cluster prediction (GMM soft assignment)
-  │
-  ▼
-Cluster-indexed search in ChromaDB
-  │
-  ▼
-Return top documents + cache result
