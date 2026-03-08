@@ -105,7 +105,7 @@ On a cache hit:
   "hit_count": 17,
   "miss_count": 25,
   "hit_rate": 0.405,
-  "threshold": 0.80
+  "threshold": 0.72
 }
 ```
 
@@ -168,8 +168,8 @@ Persistent SQLite backend, native cosine similarity, and metadata filtering with
 ### Why cluster-indexed cache?
 Without indexing, lookup is O(N). With cluster indexing, only the relevant bucket is searched — O(N/K), a 15× speedup at K=15 as the cache grows.
 
-### Why threshold τ=0.80?
-Below τ=0.75 the cache returns wrong answers — it hits on queries that are nearby in embedding space but asking different questions. Above τ=0.92 the hit rate collapses. The useful regime is τ ∈ [0.80, 0.92]. Full analysis in `cache/semantic_cache.py`.
+### Why threshold τ=0.72?
+Below τ=0.75 the cache returns wrong answers — it hits on queries that are nearby in embedding space but asking different questions. Above τ=0.92 the hit rate collapses. The useful regime is τ ∈ [0.72, 0.92]. Full analysis in `cache/semantic_cache.py`.
 
 ---
 
