@@ -31,7 +31,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(mess
 CHROMA_DIR      = os.getenv("CHROMA_DIR", "./chroma_db")
 CLUSTERER_PATH  = os.getenv("CLUSTERER_PATH", "./models/soft_clusterer.pkl")
 EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
-CACHE_THRESHOLD = float(os.getenv("CACHE_THRESHOLD", "0.80"))
+CACHE_THRESHOLD = float(os.getenv("CACHE_THRESHOLD", "0.72"))
 TOP_K_RESULTS   = int(os.getenv("TOP_K_RESULTS", "5"))
 
 
