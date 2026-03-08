@@ -13,7 +13,8 @@ venv/
 
 # Generated data
 chroma_db/
-models/
+models/*
+!models/.gitkeep
 
 # OS files
 .DS_Store
