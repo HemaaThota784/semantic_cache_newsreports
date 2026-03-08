@@ -129,7 +129,7 @@ Returns cosine similarity between two queries — useful for tuning `CACHE_THRES
 ## Project Structure
 
 ```
-semantic-search-newsgroups/
+semantic_cache_newsreports/
 ├── api/
 │   └── main.py                 # FastAPI service
 ├── analysis/
@@ -143,8 +143,8 @@ semantic-search-newsgroups/
 ├── scripts/
 │   ├── build_index.py          # End-to-end build pipeline
 │   └── generate_report.py      # Generates cluster_report.txt
-├── models/                     # Clusterer and embeddings cache (gitignored)
-├── chroma_db/                  # ChromaDB vector store (gitignored)
+├── models/                     # Trained clusterer + embedding cache (generated locally, gitignored)
+├── chroma_db/                  # Persistent vector database (generated locally, gitignored)
 ├── cluster_report.txt          # Part 2 evidence
 ├── .env.example
 ├── requirements.txt
@@ -187,3 +187,23 @@ Build the index first so `chroma_db/` and `models/` exist to be mounted.
 
 Downloaded automatically via `sklearn.datasets.fetch_20newsgroups`.  
 Source: http://qwone.com/~jason/20Newsgroups/
+
+## System Architecture
+
+Query
+  │
+  ▼
+Embed query (SentenceTransformer)
+  │
+  ├──► Semantic Cache (cosine similarity lookup)
+  │        │
+  │        └── Cache Hit → return cached result
+  │
+  ▼
+Cluster prediction (GMM soft assignment)
+  │
+  ▼
+Cluster-indexed search in ChromaDB
+  │
+  ▼
+Return top documents + cache result
