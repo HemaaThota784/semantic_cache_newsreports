@@ -213,9 +213,6 @@ class SemanticCache:
             }
         return results
 
-    # ------------------------------------------------------------------
-    # Internal helpers
-    # ------------------------------------------------------------------
 
     def _get_clusters_to_search(
         self,

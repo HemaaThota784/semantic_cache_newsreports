@@ -27,9 +27,7 @@ import numpy as np
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-# ---------------------------------------------------------------------------
-# Compiled patterns — compiled once at import time, not per call
-# ---------------------------------------------------------------------------
+
 
 _HEADER_FIELDS = re.compile(
     r'^(from|subject|organization|lines|message-id|references|'

@@ -35,10 +35,6 @@ CACHE_THRESHOLD = float(os.getenv("CACHE_THRESHOLD", "0.80"))
 TOP_K_RESULTS   = int(os.getenv("TOP_K_RESULTS", "5"))
 
 
-# ---------------------------------------------------------------------------
-# Startup / shutdown
-# ---------------------------------------------------------------------------
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
@@ -84,9 +80,6 @@ async def lifespan(app: FastAPI):
     logger.info("=== Shutting down ===")
 
 
-# ---------------------------------------------------------------------------
-# App
-# ---------------------------------------------------------------------------
 
 app = FastAPI(
     title="20 Newsgroups Semantic Search API",
@@ -99,9 +92,6 @@ app = FastAPI(
 )
 
 
-# ---------------------------------------------------------------------------
-# Request / Response schemas
-# ---------------------------------------------------------------------------
 
 class QueryRequest(BaseModel):
     query: str = Field(..., min_length=1, max_length=2000)
@@ -131,9 +121,6 @@ class SimilarityRequest(BaseModel):
     query_b: str
 
 
-# ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
 
 def _embed_and_cluster(request: Request, query: str):
     """Embed a query and return its soft cluster assignment."""
@@ -178,9 +165,6 @@ def _retrieve_documents(request: Request, embedding: np.ndarray, cluster: int, t
     ]
 
 
-# ---------------------------------------------------------------------------
-# Endpoints
-# ---------------------------------------------------------------------------
 
 @app.post("/query", response_model=QueryResponse)
 async def query_endpoint(body: QueryRequest, request: Request):

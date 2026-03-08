@@ -132,3 +132,4 @@ class NewsGroupVectorStore:
             "collection_name": self.COLLECTION_NAME,
             "persist_dir":     self.persist_dir,
         }
+
