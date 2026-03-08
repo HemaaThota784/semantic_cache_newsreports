@@ -1,0 +1,261 @@
+Corpus      : 16158 documents
+Clusters    : K=15
+Mean entropy: 0.046 (max possible: 2.708)
+High-uncertainty docs (entropy > 2.0): 0 (0.0%)
+
+======================================================================
+CLUSTER DIAGNOSTIC REPORT
+K=15 clusters, 16158 documents
+Max possible entropy (uniform): 2.708 nats
+======================================================================
+
+────────────────────────────────────────────────────────────
+CLUSTER  0  (1272 documents, mean entropy=0.058)
+  Top terms: card, know, does, use, thanks, like, video, monitor, just, chip
+  Newsgroup mix: comp.sys.ibm.pc.hardware:328, comp.sys.mac.hardware:324, sci.electronics:235, misc.forsale:134
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] ... Mac sound hardware is diverse; some macs play in stereo and mix the output (the SE/30 for instance) while others pla...
+    [entropy=0.000] |> > |> >>To sum up, when an accelerated board with 4MB VRAM (True Colour 1280x1024) |> >>AND A FAST VGA SIDE is availab...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.834] cluster 0 (0.64) + cluster 9 (0.29)
+      Would you believe that there is a letter in MacWEEK this week from one of the hardware types at Digital Eclipse. He says...
+    [entropy=0.988] cluster 0 (0.53) + cluster 8 (0.32)
+      OS/2 2.0 Extended Services - * Extended Database support * Extended Networking Support * Remote Host support * Extended ...
+
+────────────────────────────────────────────────────────────
+CLUSTER  1  (1333 documents, mean entropy=0.064)
+  Top terms: space, just, like, know, don, think, time, does, use, good
+  Newsgroup mix: sci.space:613, sci.electronics:228, sci.med:68, comp.graphics:65
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] I'm worried by the concern about it though, for a number of reasons that have nothing to do with Space Advertising (whic...
+    [entropy=0.000] Doing this in anything like reasonable time would require more propulsion capability than we can manage. You would have ...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=1.094] cluster 1 (0.38) + cluster 9 (0.32)
+      ---Hey isn't it funny how betas have bugs in them.... Hey...do me a favor and don't put up stupid posts....
+    [entropy=1.152] cluster 1 (0.41) + cluster 12 (0.33)
+      Ask for sales department. Since the state of Arizona does not go on Daylight Savings time, we effectively are in Pacific...
+
+────────────────────────────────────────────────────────────
+CLUSTER  2  (1610 documents, mean entropy=0.064)
+  Top terms: people, don, think, just, government, like, right, gun, did, fbi
+  Newsgroup mix: talk.politics.guns:564, talk.politics.misc:430, alt.atheism:121, sci.crypt:100
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] How do you know Koresh killed his followers? The FBI said he had had no such plans (and they had the place bugged), Kore...
+    [entropy=0.000] Would *you* have come out if you knew the only national TV cameras were well over a mile away, and yet the agents with t...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.975] cluster 2 (0.52) + cluster 5 (0.34)
+      That last was me, Steve Novak. I've since read the entire original posting by Hite. Mr. Fischer was actually restrained....
+    [entropy=0.985] cluster 2 (0.45) + cluster 7 (0.42)
+      Phill, are you trying to convince everyone on the net that you are in fact an abject moron for some reason? Repeating th...
+
+────────────────────────────────────────────────────────────
+CLUSTER  3  (718 documents, mean entropy=0.011)
+  Top terms: game, team, hockey, think, games, don, year, like, play, season
+  Newsgroup mix: rec.sport.hockey:682, rec.sport.baseball:34, talk.politics.misc:1, rec.motorcycles:1
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] Rob Ramage on the ice is less useful than a Gatorade bottle on the bench. Vincent Damphousse has decided to take a vacat...
+    [entropy=0.000] Montreal edged Quebec 3-2 to square their series, which seems to be headed for Game 7. The Habs dominated the first two ...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.499] cluster 3 (0.80) + cluster 4 (0.20)
+      If you think that's bad, just wait until he tries Dunston in the leadoff spot again. Yes, I also wonder if they can win ...
+    [entropy=0.654] cluster 3 (0.64) + cluster 4 (0.36)
+      I don't think Primeau is necessarily a bad pick...I'm was just trying to locate the beginning of Murray's decisions...he...
+
+────────────────────────────────────────────────────────────
+CLUSTER  4  (736 documents, mean entropy=0.022)
+  Top terms: game, year, team, think, games, don, baseball, just, like, good
+  Newsgroup mix: rec.sport.baseball:659, rec.sport.hockey:61, talk.politics.guns:3, talk.politics.mideast:3
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] Jody McDonnel on WIP in Phil. has been saying that a pitch clock was inevitable. How would a pitch clock work on throws ...
+    [entropy=0.000] But you still need the pitching staff to hold the opposing team to one run....
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.593] cluster 4 (0.72) + cluster 5 (0.28)
+      "after the game, it's no big deal" ???? After the employees leave the workplace, it doesn't matter what they say about t...
+    [entropy=0.687] cluster 4 (0.56) + cluster 3 (0.44)
+      Anybody else wonder if Hextall will feel like a dweeb when he finds out that the winning goal went in off his own D-man'...
+
+────────────────────────────────────────────────────────────
+CLUSTER  5  (1633 documents, mean entropy=0.079)
+  Top terms: thanks, mail, don, just, like, know, post, email, people, time
+  Newsgroup mix: sci.space:158, rec.motorcycles:131, alt.atheism:129, talk.politics.misc:118
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] I would also like to hear from people involved in IFES or IVF groups just to hear how things are going on your campus. A...
+    [entropy=0.000] As with the previous announcement, readers are reminded that this is a not-for-profit endeavor. This is a copyrighted wo...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=1.001] cluster 5 (0.54) + cluster 2 (0.27)
+      Does anyone else see the contradiction in this paragraph? Sorry, Frank, but what I put in quotes is your own words from ...
+    [entropy=1.065] cluster 5 (0.44) + cluster 2 (0.43)
+      Well, that's the obvious conclusion, given your train of logic. The corollary then is that it must be a waste of time fo...
+
+────────────────────────────────────────────────────────────
+CLUSTER  6  (861 documents, mean entropy=0.052)
+  Top terms: drive, scsi, problem, windows, disk, dos, use, just, mouse, like
+  Newsgroup mix: comp.sys.ibm.pc.hardware:329, comp.sys.mac.hardware:216, comp.os.ms-windows.misc:212, sci.electronics:39
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] I have a floppy drive which has developed "General failure" errors. (It's a Teac 1.44Mb 3.5" drive). I took it out of th...
+    [entropy=0.000] Need to document occasional failures in reading/writing, check overall integrity of disk's hardware and sectors. I belie...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.748] cluster 6 (0.73) + cluster 9 (0.20)
+      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [...] My Problem: I wasn't aware of the fact that I would need an *SCSI*-CD-ROM for Win...
+    [entropy=0.978] cluster 6 (0.56) + cluster 0 (0.26)
+      While there may not be a part number for the CD300i drive, I have seen a part number for the bezel kit (a new front pane...
+
+────────────────────────────────────────────────────────────
+CLUSTER  7  (1593 documents, mean entropy=0.036)
+  Top terms: god, people, jesus, don, think, believe, just, does, know, say
+  Newsgroup mix: soc.religion.christian:768, alt.atheism:364, talk.religion.misc:313, talk.politics.misc:62
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] You haven't fully explained the atheist position. Many theists believe that there is "no proof of the existence of God" ...
+    [entropy=0.000] First of all, God does not take any sort of pleasure from punishing people. He will have mercy on whom he will have merc...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.909] cluster 7 (0.55) + cluster 1 (0.37)
+      Speaking as one who knows relativity and quantum mechanics, I say: Bullshit. Speaking as one who has taken LSD, I say: B...
+    [entropy=1.037] cluster 7 (0.43) + cluster 5 (0.42)
+      I think that Lee Lady and I are talking at cross purposes. Above, Lady seems concerned with the contrast between great s...
+
+────────────────────────────────────────────────────────────
+CLUSTER  8  (857 documents, mean entropy=0.054)
+  Top terms: 00, new, price, offer, like, thanks, mail, know, sell, good
+  Newsgroup mix: misc.forsale:467, sci.electronics:133, comp.sys.mac.hardware:63, comp.sys.ibm.pc.hardware:41
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] I have the following software forsale: Microsoft MS-DOS 5.0 3.5"DD $15 -- This is a good buy for those who don't need al...
+    [entropy=0.000] 1 Sega Genesis (including all cables, manuals, boxes) 1 controller 9 games, including all manuals and boxes: Sonic the H...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.685] cluster 8 (0.57) + cluster 9 (0.43)
+      I need the Polaroid Palette Model 72-10 (or similar model) manual. I am willing to pay $10 for it, plus the shipping cha...
+    [entropy=0.918] cluster 8 (0.63) + cluster 0 (0.23)
+      Hello, I am looking for a HP28s or HP28sx calculator. If anyone has one they are getting rid of please let me know. repl...
+
+────────────────────────────────────────────────────────────
+CLUSTER  9  (1062 documents, mean entropy=0.062)
+  Top terms: windows, thanks, use, like, know, does, software, ftp, file, printer
+  Newsgroup mix: comp.graphics:277, comp.os.ms-windows.misc:277, comp.windows.x:192, comp.sys.mac.hardware:81
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] For Sale ...: Hewlett Packard DeskJet 500 inkjet printer. o Perfect condition both internally and externally o Comes wit...
+    [entropy=0.000] Speakers at Xhibition 93 include: Bob Schiefler, Lu Abel, Mark Ackerman, Paul Asente, Doug Blewett, Donna Converse, Jim ...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.849] cluster 9 (0.66) + cluster 11 (0.23)
+      My company maintains a 20,000+ mailing list which is regularly rented for one time use by the major software companies. ...
+    [entropy=1.043] cluster 9 (0.56) + cluster 1 (0.23)
+      I already found the gopher ascii pics. thanks Richard Mancsuo...
+
+────────────────────────────────────────────────────────────
+CLUSTER 10  (791 documents, mean entropy=0.011)
+  Top terms: israel, jews, people, israeli, armenian, armenians, arab, just, jewish, don
+  Newsgroup mix: talk.politics.mideast:652, alt.atheism:63, talk.politics.misc:20, soc.religion.christian:19
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] Anyone care to speculate on this? I'll let the rest of the net judge this on its own merits. Between 1914 and 1920, 2.5 ...
+    [entropy=0.000] I wouldn't bet on it. Arab governments generally don't care much about the Palestineans and their struggle but find it u...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.683] cluster 10 (0.57) + cluster 7 (0.43)
+      [...] Rex, there are literally hundreds of thousands of 32nd degree Masons in this country, and thousands of 33rds. If n...
+    [entropy=0.692] cluster 10 (0.52) + cluster 2 (0.48)
+      "In December, former national security adviser Zbigniew Brzezinski told a Senate committee that sanctions were costing I...
+
+────────────────────────────────────────────────────────────
+CLUSTER 11  (734 documents, mean entropy=0.025)
+  Top terms: key, chip, use, government, encryption, clipper, people, don, keys, nsa
+  Newsgroup mix: sci.crypt:576, talk.politics.guns:69, sci.electronics:29, comp.graphics:8
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] I don't doubt that this will be the attitude of many corporate leaders. It's understandable--most corporate execs don't ...
+    [entropy=0.000] This is a voluntary program, and thus harder for us to object to on the surface. Their strategy is a business one rather...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.692] cluster 11 (0.52) + cluster 2 (0.48)
+      A person P has committed a crime C in country X if P was within the borders of X at the time when C was committed. It do...
+    [entropy=0.693] cluster 11 (0.50) + cluster 2 (0.50)
+      What makes you say that the guns were illegal?? I understand that the BD's had a valid Class III Federal Firearms Permit...
+
+────────────────────────────────────────────────────────────
+CLUSTER 12  (1331 documents, mean entropy=0.032)
+  Top terms: car, bike, just, like, don, know, good, new, think, cars
+  Newsgroup mix: rec.autos:601, rec.motorcycles:568, sci.electronics:46, misc.forsale:44
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] Greg, I'm very new to motorcycles. Haven't even bought one yet. I was in the same position about you. How do you learn i...
+    [entropy=0.000] I've had mine for four or so years, and haven't had any serious problems with it. I bought it used for $750 with about 8...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.905] cluster 12 (0.64) + cluster 5 (0.20)
+      AAA: ~$2000/yr. State Farm: 2614.92/yr. Allstate: 1220/yr. AAA is non-profit, so they said I could also expect to receiv...
+    [entropy=1.022] cluster 12 (0.50) + cluster 6 (0.32)
+      It's NOT the concrete floor that does it. The problem is that lead-acid cells self discharge over time. Even high qualit...
+
+────────────────────────────────────────────────────────────
+CLUSTER 13  (853 documents, mean entropy=0.032)
+  Top terms: window, use, file, thanks, windows, problem, program, server, like, does
+  Newsgroup mix: comp.windows.x:511, comp.graphics:190, comp.os.ms-windows.misc:107, sci.electronics:13
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] Here is the code: int stoploop = 0; static void Callback(Widget, XtPointer, XtPointer); main() { XtToolkitInitialize(); ...
+    [entropy=0.000] I create two windows: w1 (child to root) with event_mask = ButtonPressMask|KeyPressMask; w2 (child to w1) with do_not_pr...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.684] cluster 13 (0.57) + cluster 9 (0.43)
+      I got a few requests asking for a summary, so I'll attempt one here: Here's the ones I know of: Wind/U - Bristol Technol...
+    [entropy=0.717] cluster 13 (0.79) + cluster 0 (0.10)
+      In FirstClass, I used this same string, with the addition of S0=0 right before the S11 command, in the setup box. This d...
+
+────────────────────────────────────────────────────────────
+CLUSTER 14  (774 documents, mean entropy=0.011)
+  Top terms: don, know, like, just, people, msg, does, good, time, use
+  Newsgroup mix: sci.med:644, talk.politics.misc:37, sci.electronics:16, sci.space:12
+
+  CORE (most confident, entropy ≈ 0 = single cluster):
+    [entropy=0.000] -Allergy medicine, huh? Is this just to get rid of the resultant migraine or whatever, or does it actually suppress alle...
+    [entropy=0.000] Anyway, I recently had a really bad flu, so I called a friend to get me some cough syrup with both an expectorant and a ...
+
+  BOUNDARY (most uncertain — genuinely multi-cluster):
+    [entropy=0.607] cluster 14 (0.75) + cluster 1 (0.24)
+      Oh boy, get a small baby and figure out how much brain power they have the first 6 months.... Cheers, Kent...
+    [entropy=0.730] cluster 14 (0.74) + cluster 1 (0.21)
+      New Data Show About 100 Major U.S. Water Supplies Vulnerable To Milwaukee-Type Disease Outbreak To: National Desk, Envir...
+
+======================================================================
+NEWSGROUP → CLUSTER MAPPING (how original labels map to our clusters)
+======================================================================
+  alt.atheism                         → C7:364, C5:129, C2:121
+  comp.graphics                       → C9:277, C13:190, C0:112
+  comp.os.ms-windows.misc             → C9:277, C6:212, C13:107
+  comp.sys.ibm.pc.hardware            → C6:329, C0:328, C9:58
+  comp.sys.mac.hardware               → C0:324, C6:216, C9:81
+  comp.windows.x                      → C13:511, C9:192, C5:58
+  misc.forsale                        → C8:467, C0:134, C5:73
+  rec.autos                           → C12:601, C5:56, C1:53
+  rec.motorcycles                     → C12:568, C5:131, C2:39
+  rec.sport.baseball                  → C4:659, C5:94, C3:34
+  rec.sport.hockey                    → C3:682, C5:87, C4:61
+  sci.crypt                           → C11:576, C2:100, C5:66
+  sci.electronics                     → C0:235, C1:228, C8:133
+  sci.med                             → C14:644, C1:68, C5:65
+  sci.space                           → C1:613, C5:158, C2:38
+  soc.religion.christian              → C7:768, C5:90, C2:49
+  talk.politics.guns                  → C2:564, C5:81, C11:69
+  talk.politics.mideast               → C10:652, C5:86, C2:75
+  talk.politics.misc                  → C2:430, C5:118, C7:62
+  talk.religion.misc                  → C7:313, C2:100, C5:80
+
+

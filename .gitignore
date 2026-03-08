@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# Generated data
+cache/
+chroma_db/
+models/
+
+# OS files
+.DS_Store
+Thumbs.db

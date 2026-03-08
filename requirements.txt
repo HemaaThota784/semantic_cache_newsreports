@@ -1,0 +1,23 @@
+# Core ML / embeddings
+sentence-transformers
+scikit-learn
+numpy
+scipy
+
+# Vector database
+chromadb
+
+# Dimensionality reduction (for cluster visualisation)
+umap-learn
+matplotlib
+seaborn
+pandas
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Utilities
+tqdm
+python-dotenv
