@@ -14,7 +14,7 @@ Semantic search over the 20 Newsgroups dataset (~18,800 posts across 20 topics) 
 ### 1. Clone and set up environment
 
 ```bash
-git clone https://github.com/yourusername/semantic-search-newsgroups.git
+git clone https://github.com/HemaaThota784/semantic-search-newsgroups.git
 cd semantic-search-newsgroups
 
 python -m venv venv
