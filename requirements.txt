@@ -10,8 +10,6 @@ chromadb
 # Dimensionality reduction (for cluster visualisation)
 umap-learn
 matplotlib
-seaborn
-pandas
 
 # API
 fastapi

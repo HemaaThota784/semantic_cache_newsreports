@@ -1,11 +1,11 @@
 # 20 Newsgroups Semantic Search System
 
-A lightweight semantic search system built on the 20 Newsgroups dataset (~20,000 news posts across 20 topics), featuring:
+Semantic search over the 20 Newsgroups dataset (~18,800 posts across 20 topics) with:
 
-- **Part 1**: Sentence-transformer embeddings persisted in ChromaDB vector store
-- **Part 2**: Fuzzy (soft) clustering via Gaussian Mixture Models — every document gets a probability distribution over clusters, not a hard label
-- **Part 3**: Semantic cache built from scratch using cosine similarity + cluster-indexed lookup (no Redis, no caching libraries)
-- **Part 4**: FastAPI service exposing search and cache as REST endpoints
+- **Part 1** — Sentence-transformer embeddings persisted in ChromaDB
+- **Part 2** — Soft clustering via GMM — every document gets a probability distribution over clusters, not a hard label
+- **Part 3** — Semantic cache built from scratch using cosine similarity + cluster-indexed lookup (no Redis, no caching libraries)
+- **Part 4** — FastAPI service exposing search and cache as REST endpoints
 
 ---
 
@@ -28,20 +28,7 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 2. Configure environment (optional)
-
-```bash
-# Mac/Linux
-cp .env.example .env
-
-# Windows
-copy .env.example .env
-```
-
-Edit `.env` if you want to change the cache threshold or other settings.
-The dataset downloads automatically — no manual setup needed.
-
-### 3. Build the index
+### 2. Build the index
 
 ```bash
 python scripts/build_index.py
@@ -49,21 +36,32 @@ python scripts/build_index.py
 
 This will:
 - Download the 20 Newsgroups dataset automatically via sklearn (~14MB, first run only)
-- Clean and embed ~19,000 documents using `all-MiniLM-L6-v2`
+- Clean and embed ~18,800 documents using `all-MiniLM-L6-v2`
 - Fit a GMM with K=15 clusters and save soft assignments
 - Persist everything to ChromaDB
 
-**First run takes 15–20 minutes** (embedding on CPU). Subsequent runs are instant — embeddings are cached to `models/embeddings_cache.npz`.
+**First run takes 15–20 minutes** on CPU. Subsequent runs skip the embedding step — cached to `models/embeddings_cache.npz`.
 
-### 4. Start the API
+### 3. Start the API
 
 ```bash
 uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-### 5. Test in browser
+### 4. Open the docs
 
-Open `http://localhost:8000/docs` for the interactive API UI.
+`http://localhost:8000/docs`
+
+---
+
+## Configuration (optional)
+
+```bash
+cp .env.example .env   # Mac/Linux
+copy .env.example .env # Windows
+```
+
+Edit `.env` to change the cache threshold or other settings. Defaults work out of the box.
 
 ---
 
@@ -89,7 +87,7 @@ Response:
 }
 ```
 
-On a cache hit (similar query asked before):
+On a cache hit:
 ```json
 {
   "cache_hit": true,
@@ -120,11 +118,11 @@ Flushes all cache entries and resets counters.
 ```json
 {
   "query_a": "NASA space shuttle missions",
-  "query_b": "NASA shuttle mission program"
+  "query_b": "NASA shuttle launch program"
 }
 ```
 
-Returns cosine similarity between two queries — useful for tuning the cache threshold.
+Returns cosine similarity between two queries — useful for tuning `CACHE_THRESHOLD`.
 
 ---
 
@@ -133,10 +131,10 @@ Returns cosine similarity between two queries — useful for tuning the cache th
 ```
 semantic-search-newsgroups/
 ├── api/
-│   └── main.py                 # FastAPI service (all endpoints)
+│   └── main.py                 # FastAPI service
 ├── analysis/
 │   ├── clustering.py           # GMM soft clustering
-│   └── cluster_report.py       # Cluster diagnostics and reporting
+│   └── cluster_report.py       # Cluster diagnostics
 ├── cache/
 │   └── semantic_cache.py       # Hand-written semantic cache
 ├── embeddings/
@@ -144,12 +142,11 @@ semantic-search-newsgroups/
 │   └── vector_store.py         # ChromaDB wrapper
 ├── scripts/
 │   ├── build_index.py          # End-to-end build pipeline
-│   ├── generate_report.py      # Generates cluster_report.txt
-│   └── run_demo.py             # Interactive demo and smoke test
-├── models/                     # Saved clusterer and embeddings cache
-├── chroma_db/                  # ChromaDB vector store (auto-created)
-├── cluster_report.txt          # Part 2 evidence (run generate_report.py)
-├── .env.example                # Environment variable template
+│   └── generate_report.py      # Generates cluster_report.txt
+├── models/                     # Clusterer and embeddings cache (gitignored)
+├── chroma_db/                  # ChromaDB vector store (gitignored)
+├── cluster_report.txt          # Part 2 evidence
+├── .env.example
 ├── requirements.txt
 ├── Dockerfile
 └── docker-compose.yml
@@ -160,52 +157,33 @@ semantic-search-newsgroups/
 ## Design Decisions
 
 ### Why GMM for clustering?
-K-Means produces hard assignments. A post about gun legislation belongs to
-both `talk.politics.guns` AND `talk.politics.misc`. GMM gives a probability
-distribution over clusters per document, capturing this ambiguity. See
-`analysis/clustering.py` for full justification.
+K-Means produces hard assignments. A post about gun legislation belongs to both `talk.politics.guns` AND `talk.politics.misc`. GMM gives a probability distribution over clusters per document, preserving that ambiguity. Full justification in `analysis/clustering.py`.
 
-### Why K=15 clusters?
-Justified via BIC score curve — the elbow falls at K≈12–16. K=15 merges
-semantically redundant newsgroups (e.g. `comp.sys.ibm.pc.hardware` ≈
-`comp.sys.mac.hardware`) into coherent macro-topics. See `cluster_report.txt`.
+### Why K=15 not 20?
+Several original newsgroups are semantically redundant — `comp.sys.ibm.pc.hardware` and `comp.sys.mac.hardware` are both "PC hardware". K=15 merges these into coherent macro-topics. Justified by BIC elbow curve — see `cluster_report.txt`.
 
 ### Why ChromaDB?
-Zero-dependency spin-up, persistent SQLite backend, native cosine similarity,
-and metadata filtering. FAISS would be faster at >1M vectors but adds
-operational complexity for zero gain at 20k documents.
+Persistent SQLite backend, native cosine similarity, and metadata filtering with no extra infrastructure. FAISS is faster at >1M vectors but adds operational complexity for zero gain at 18k documents.
+
+### Why cluster-indexed cache?
+Without indexing, lookup is O(N). With cluster indexing, only the relevant bucket is searched — O(N/K), a 15× speedup at K=15 as the cache grows.
 
 ### Why threshold τ=0.85?
-Validated on real query pairs from this dataset. At τ=0.88, near-paraphrases
-like "NASA shuttle mission program" (similarity=0.855) miss the cache.
-At τ=0.75, unrelated queries in the same cluster start hitting (wrong answers).
-τ=0.85 is the empirically validated sweet spot. See `cache/semantic_cache.py`.
-
-### Why cluster-indexed cache lookup?
-Without indexing, lookup is O(N) — every query needs a dot product against
-every cached entry. With cluster indexing, lookup is O(N/K) — only the
-relevant cluster bucket is searched, giving a 15× speedup at K=15.
+Below τ=0.75 the cache returns wrong answers — it hits on queries that are nearby in embedding space but asking different questions. Above τ=0.92 the hit rate collapses. The useful regime is τ ∈ [0.82, 0.92]. Full analysis in `cache/semantic_cache.py`.
 
 ---
 
 ## Docker
 
 ```bash
-# Build and run
 docker-compose up --build
-
-# Or manually
-docker build -t newsgroups-search .
-docker run -p 8000:8000 -v $(pwd)/chroma_db:/app/chroma_db -v $(pwd)/models:/app/models newsgroups-search
 ```
 
-Note: Run `python scripts/build_index.py` before building the Docker image
-so that `chroma_db/` and `models/` exist and get mounted correctly.
+Build the index first so `chroma_db/` and `models/` exist to be mounted.
 
 ---
 
 ## Dataset
 
-20 Newsgroups dataset from UCI Machine Learning Repository.
-Downloaded automatically via `sklearn.datasets.fetch_20newsgroups`.
-Original source: http://qwone.com/~jason/20Newsgroups/
+Downloaded automatically via `sklearn.datasets.fetch_20newsgroups`.  
+Source: http://qwone.com/~jason/20Newsgroups/

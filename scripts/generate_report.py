@@ -25,7 +25,7 @@ import numpy as np
 from sklearn.datasets import fetch_20newsgroups
 from embeddings.preprocess import clean_article
 from analysis.clustering import SoftClusterer
-from analysis.cluster_report import print_cluster_diagnostics, print_bic_table
+from analysis.cluster_report import print_cluster_diagnostics
 
 CLUSTERER_PATH   = "./models/soft_clusterer.pkl"
 EMBEDDINGS_CACHE = "./models/embeddings_cache.npz"
@@ -36,7 +36,6 @@ MIN_DOC_LENGTH   = 50
 def main():
     print("Loading data and models...")
 
-    # Load corpus via sklearn (same as build_index.py)
     dataset = fetch_20newsgroups(
         subset='all',
         remove=('headers', 'footers', 'quotes'),
@@ -47,7 +46,6 @@ def main():
     labels      = dataset.target.tolist()
     label_names = dataset.target_names
 
-    # Clean
     texts, kept_labels = [], []
     for raw, label in zip(raw_texts, labels):
         cleaned = clean_article(raw)
@@ -56,15 +54,15 @@ def main():
             kept_labels.append(label)
     labels = kept_labels
 
-    # Load embeddings and clusterer
     data       = np.load(EMBEDDINGS_CACHE)
     embeddings = data["embeddings"]
-    print(f"Loaded {len(texts)} documents, embeddings shape: {embeddings.shape}")
+    print(f"Loaded {len(texts)} documents, embeddings: {embeddings.shape}")
 
     clusterer = SoftClusterer.load(CLUSTERER_PATH)
     soft_assignments, dominant_clusters, entropies = clusterer.transform(embeddings)
 
-    # Capture output to file
+    # Redirect stdout to a buffer so print_cluster_diagnostics output
+    # can be written to file instead of the terminal
     buffer     = io.StringIO()
     old_stdout = sys.stdout
     sys.stdout = buffer

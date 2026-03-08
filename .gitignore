@@ -12,7 +12,6 @@ venv/
 *.log
 
 # Generated data
-cache/
 chroma_db/
 models/
 
